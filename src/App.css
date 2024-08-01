@@ -1,38 +1,53 @@
+/* src/App.css */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   background-color: #282c34;
-  min-height: 100vh;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin: 20px 0;
+}
+
+.slide-container {
+  margin-top: 50px;
+  width: 80%; /* Ensure it adapts to screen size */
+}
+
+.each-slide > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+/* src/ClockCountdown.css */
+.clock-countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+.timer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.value {
+  font-size: 2em;
+  margin: 5px;
 }
