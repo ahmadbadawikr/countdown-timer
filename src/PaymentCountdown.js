@@ -31,6 +31,7 @@ const PaymentCountdown = () => {
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const [amountLeft, setAmountLeft] = useState(totalAmount);
+  const [amountGained, setAmountGained] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -38,13 +39,15 @@ const PaymentCountdown = () => {
       setTimeLeft(newTimeLeft);
       const elapsedTime = totalTime - newTimeLeft.totalMilliseconds;
       const newAmountLeft = totalAmount - (totalAmount * elapsedTime) / totalTime;
+      const newAmountGained = totalAmount - newAmountLeft;
       setAmountLeft(newAmountLeft);
+      setAmountGained(newAmountGained);
     }, 1); // Update every millisecond
 
     return () => clearInterval(timer);
   }, [calculateTimeLeft, totalTime, totalAmount]);
 
-  const progress = ((totalAmount - amountLeft) / totalAmount) * 100;
+  const progress = (amountGained / totalAmount) * 100;
 
   return (
     <div style={{ textAlign: 'center' }}>
@@ -58,7 +61,8 @@ const PaymentCountdown = () => {
         <span>{timeLeft.milliseconds} milliseconds</span>
       </div>
       <div>
-        <h2>"I dont read what I sign" tax remaining: IDR {amountLeft.toFixed(2)}</h2>
+        <h2>"I don't read what I sign" tax remaining: IDR {amountLeft.toFixed(2)}</h2>
+        <h2>Amount gained: IDR {amountGained.toFixed(2)}</h2>
         <ProgressBar completed={progress} />
       </div>
     </div>
