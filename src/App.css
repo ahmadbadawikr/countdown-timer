@@ -1,26 +1,314 @@
 /* src/App.css */
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #282c34;
-  color: white;
-  font-family: 'Arial', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1 {
+.App {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+/* Payment Countdown Styles */
+.payment-countdown {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.main-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #bdc3c7;
+  font-weight: 300;
+}
+
+/* Time Display */
+.time-display {
+  margin-bottom: 40px;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.time-unit {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.time-unit:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.time-value {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4ecdc4;
+  margin-bottom: 8px;
+}
+
+.time-label {
+  font-size: 0.9rem;
+  color: #bdc3c7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Financial Section */
+.financial-section {
+  margin-bottom: 40px;
+}
+
+.amount-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.amount-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.amount-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.amount-card.danger {
+  border-left: 5px solid #ff6b6b;
+}
+
+.amount-card.success {
+  border-left: 5px solid #4ecdc4;
+}
+
+.amount-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: #ecf0f1;
+}
+
+.amount-card .amount {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.amount-card .percentage {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.amount-card.danger .percentage {
+  color: #ff6b6b;
+}
+
+.amount-card.success .percentage {
+  color: #4ecdc4;
+}
+
+/* Progress Section */
+.progress-section {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.progress-section h3 {
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+/* Burn Rates */
+.burn-rates {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.burn-rates h3 {
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.burn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.burn-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.burn-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.burn-period {
+  font-size: 0.9rem;
+  color: #bdc3c7;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.burn-amount {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #4ecdc4;
+}
+
+/* Chart Section */
+.chart-section {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 40px;
+}
+
+.chart-section h3 {
+  margin-bottom: 25px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.chart-container {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 20px;
   margin-bottom: 20px;
 }
 
-h2 {
-  margin: 20px 0;
+/* Milestones Section */
+.milestones-section {
+  margin-top: 25px;
 }
 
+.milestones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.milestone-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.milestone-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.milestone-card.reached {
+  border-left: 4px solid #4ecdc4;
+  background: rgba(78, 205, 196, 0.15);
+}
+
+.milestone-card.upcoming {
+  border-left: 4px solid #f39c12;
+  background: rgba(243, 156, 18, 0.1);
+}
+
+.milestone-percentage {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #4ecdc4;
+}
+
+.milestone-card.upcoming .milestone-percentage {
+  color: #f39c12;
+}
+
+.milestone-date {
+  font-size: 0.9rem;
+  color: #ecf0f1;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.milestone-status {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.milestone-card.reached .milestone-status {
+  color: #4ecdc4;
+}
+
+.milestone-card.upcoming .milestone-status {
+  color: #f39c12;
+}
+
+/* Quotes Slideshow */
 .slide-container {
-  margin-top: 50px;
-  width: 80%; /* Ensure it adapts to screen size */
+  margin: 40px auto;
+  max-width: 700px;
 }
 
 .each-slide > div {
@@ -28,17 +316,38 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 0 10px;
 }
 
-/* src/ClockCountdown.css */
+.each-slide h3 {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.each-slide p {
+  font-size: 1rem;
+  color: #4ecdc4;
+  font-weight: 500;
+}
+
+/* Clock Countdown */
 .clock-countdown {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  color: white;
-  font-family: 'Arial', sans-serif;
+  margin: 40px 0;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .timer {
@@ -48,6 +357,63 @@ h2 {
 }
 
 .value {
-  font-size: 2em;
-  margin: 5px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 10px;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2rem;
+  }
+  
+  .time-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .time-value {
+    font-size: 2rem;
+  }
+  
+  .amount-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .burn-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .chart-section {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .App {
+    padding: 10px;
+  }
+  
+  .payment-countdown {
+    padding: 10px;
+  }
+  
+  .main-title {
+    font-size: 1.8rem;
+  }
+  
+  .time-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .time-unit {
+    padding: 15px;
+  }
+  
+  .time-value {
+    font-size: 1.8rem;
+  }
 }

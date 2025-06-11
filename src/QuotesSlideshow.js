@@ -5,46 +5,76 @@ import 'react-slideshow-image/dist/styles.css';
 
 const quotes = [
     {
+      text: "Kebebasan finansial bukan tentang memiliki banyak uang, tetapi tentang memiliki pilihan dalam hidup.",
+      author: "Anonim",
+    },
+    {
+      text: "Kontrak kerja adalah komitmen, bukan penjara. Tapi keluar dengan cara yang terhormat adalah investasi jangka panjang.",
+      author: "Pepatah Bisnis",
+    },
+    {
       text: "Freedom is not worth having if it does not include the freedom to make mistakes.",
       author: "Mahatma Gandhi",
+    },
+    {
+      text: "Setiap hari yang berlalu adalah investasi menuju kebebasan yang sesungguhnya.",
+      author: "Motivasi Harian",
     },
     {
       text: "The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion.",
       author: "Albert Camus",
     },
     {
-      text: "Freedom is never voluntarily given by the oppressor; it must be demanded by the oppressed.",
-      author: "Martin Luther King Jr.",
+      text: "Bersabar dalam menjalani komitmen adalah tanda kedewasaan profesional.",
+      author: "Wisdom Indonesia",
     },
     {
       text: "Those who deny freedom to others, deserve it not for themselves.",
       author: "Abraham Lincoln",
     },
     {
-      text: "For to be free is not merely to cast off one’s chains, but to live in a way that respects and enhances the freedom of others.",
+      text: "Setiap rupiah yang 'terbakar' hari ini adalah langkah menuju kebebasan di masa depan.",
+      author: "Financial Freedom Quote",
+    },
+    {
+      text: "For to be free is not merely to cast off one's chains, but to live in a way that respects and enhances the freedom of others.",
       author: "Nelson Mandela",
     },
     {
-      text: "Freedom is the right of all sentient beings.",
-      author: "Optimus Prime",
+      text: "Menghitung hari menuju kebebasan sambil menghargai proses pembelajaran adalah kearifan sejati.",
+      author: "Professional Wisdom",
     },
     {
       text: "With great power comes great responsibility.",
       author: "Uncle Ben (Spider-Man)",
     },
     {
-      text: "Happiness can be found even in the darkest of times, if one only remembers to turn on the light.",
-      author: "Albus Dumbledore (Harry Potter)",
+      text: "Waktu adalah uang, tetapi pengalaman adalah harta yang tak ternilai.",
+      author: "Pepatah Bisnis Indonesia",
     }
   ];
 
 const QuotesSlideshow = () => {
+  const slideProperties = {
+    duration: 4000,
+    autoplay: true,
+    transitionDuration: 500,
+    arrows: false,
+    pauseOnHover: true,
+    prevArrow: <div></div>,
+    nextArrow: <div></div>,
+    indicators: false
+  };
+
   return (
-    <div className="slide-container" style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
-      <Slide>
+    <div className="slide-container">
+      <h2 style={{ textAlign: 'center', marginBottom: '30px', color: '#4ecdc4' }}>
+        💭 Motivasi & Inspirasi
+      </h2>
+      <Slide {...slideProperties}>
         {quotes.map((quote, index) => (
           <div className="each-slide" key={index}>
-            <div style={{ background: '#282c34', color: 'white', padding: '20px', borderRadius: '10px', textAlign: 'center' }}>
+            <div>
               <h3>"{quote.text}"</h3>
               <p>- {quote.author}</p>
             </div>
